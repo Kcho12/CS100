@@ -65,22 +65,22 @@ def joystick_moved(event):
     global direction
     direction = event.direction
     
-if len(vegetables) < 3 and randint(1, 5) > 4:
-    def make_veg():
-        new = slug[0]
-        while new in slug:
-            x = randint(0,7)
-            y = randint(0,7)
-            new = [x,y]
-            vegetables.append(new)
-            sense.set_pixel(x, y, color_two)
+def make_veg():
+    new = slug[0]
+    while new in slug:
+        x = randint(0,7)
+        y = randint(0,7)
+        new = [x,y]
+        vegetables.append(new)
+        sense.set_pixel(x, y, color_two)
 
 
 # Main program ------------------------
 sense.clear()
 draw_slug()
 sense.stick.direction_any = joystick_moved
-make_veg()
+if len(vegetables) < 3 and randint(1, 5) > 4:
+    make_veg()
 while True:
   move()
   sleep(0.5)

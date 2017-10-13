@@ -26,11 +26,6 @@ def move():
   global dead
 
   remove = True
-
-  if next in slug:
-      dead = True
-      sense.show_message("Game Over")
-      sense.show_message(":)")
   
   # Find the last and first items in the slug list
   last = slug[-1]
@@ -62,6 +57,11 @@ def move():
             next[1] = 7
         else:
             next[1] = last[1] - 1
+
+  if next in slug:
+      dead = True
+      sense.show_message("Game Over")
+      sense.show_message(":)")
 
   # Add this pixel at the end of the slug list
   slug.append(next)

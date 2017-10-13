@@ -11,12 +11,19 @@ color_two = (255,0,0)
 direction = "right"
 blank = (0,0,0)
 vegetables = []
+score = 0
+pause = 0.5
 
 # Functions ---------------------------
 def draw_slug():
     for segment in slug:
         sense.set_pixel(segment[0], segment[1], color)
+        
 def move():
+  global score
+  global pause
+
+  remove = True
   
   # Find the last and first items in the slug list
   last = slug[-1]
@@ -55,11 +62,16 @@ def move():
   # Set the new pixel to the slug's colour
   sense.set_pixel(next[0], next[1], color)
 
-  # Set the first pixel in the slug list to blank
-  sense.set_pixel(first[0], first[1], blank)
-  
-  # Remove the first pixel from the list
-  slug.remove(first)
+  if next in vegetables:
+      vegetables.remove(next)
+      score += 1
+      if ((score % 5) == 0):
+        remove = False
+        pause = pause * 0.8
+
+  if remove:
+      sense.set_pixel(first[0], first[1], blank)
+      slug.remove(first)
 
 def joystick_moved(event):
     global direction
@@ -79,8 +91,8 @@ def make_veg():
 sense.clear()
 draw_slug()
 sense.stick.direction_any = joystick_moved
-if len(vegetables) < 3 and randint(1, 5) > 4:
-    make_veg()
 while True:
-  move()
-  sleep(0.5)
+    if len(vegetables) < 3 and randint(1, 5) > 4:
+        make_veg()
+    move()
+    sleep(pause)

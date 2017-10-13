@@ -74,7 +74,7 @@ def move():
       score += 1
       if ((score % 5) == 0):
         remove = False
-        pause = pause * 0.8
+        pause = pause * 0.7
 
   if remove:
       sense.set_pixel(first[0], first[1], blank)

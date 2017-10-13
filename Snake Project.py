@@ -13,6 +13,7 @@ blank = (0,0,0)
 vegetables = []
 score = 0
 pause = 0.5
+dead = False
 
 # Functions ---------------------------
 def draw_slug():
@@ -22,8 +23,14 @@ def draw_slug():
 def move():
   global score
   global pause
+  global dead
 
   remove = True
+
+  if next in slug:
+      dead = True
+      sense.show_message("Game Over")
+      sense.show_message(":)")
   
   # Find the last and first items in the slug list
   last = slug[-1]
@@ -91,7 +98,7 @@ def make_veg():
 sense.clear()
 draw_slug()
 sense.stick.direction_any = joystick_moved
-while True:
+while (dead==False):
     if len(vegetables) < 3 and randint(1, 5) > 4:
         make_veg()
     move()

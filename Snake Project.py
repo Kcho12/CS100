@@ -1,4 +1,4 @@
-from sense_hat import SenseHat # it is sense_hat when using pi
+from sense_hat import SenseHat # it is sense_emu when using pi
 from time import sleep
 from random import randint
 

@@ -65,6 +65,7 @@ def move():
       dead = True
       sense.show_message("Game Over")
       sense.show_message(":)")
+      sense.show_message("Score: " + str(score))
 
   # Add this pixel at the end of the slug list
   slug.append(next)

@@ -1,5 +1,5 @@
 # based of a friedly internet tutorial:
-#
+# https://projects.raspberrypi.org/en/projects/slug
 
 from sense_hat import SenseHat # it is sense_emu when using pi
 from time import sleep

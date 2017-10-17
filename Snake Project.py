@@ -1,3 +1,6 @@
+# based of a friedly internet tutorial:
+#
+
 from sense_hat import SenseHat # it is sense_emu when using pi
 from time import sleep
 from random import randint

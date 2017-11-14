@@ -1,0 +1,109 @@
+from sense_hat import SenseHat
+from time import sleep
+
+sense = SenseHat()
+event = sense.stick.pressed()
+
+
+# Variables ---------------------------
+
+
+
+br = (244,164,96) # Brown
+
+
+
+g = (0,104,10) # green
+
+
+
+y = (253,184,19) # yellow
+
+
+
+b = (0,191,255) # blue
+
+
+
+color_two = (255,0,0) # idk this color
+
+
+
+l = (0,0,0) # blank
+
+tom_pixels_with_setting = [
+
+
+
+    g, g, b, b, b, b, b, b,
+
+
+
+    g, g, b, b, b, br, b, b,
+
+
+
+    b, b, b, b, b, br, br, b,
+
+
+
+    b, b, br, br, br, br, b, b,
+
+
+
+    l, l, l, l, l, l, l, l,
+
+
+
+    b, b, br, b, b, br, b, b,
+
+
+
+    b, b, br, b, b, br, b, b,
+
+
+
+    g, g, g, g, g, g, g, g,
+
+    ]
+sense.set_pixels(tom_pixels_with_setting)
+
+if event == sense.stick.pressed:  # change number and colors to what we want
+
+    tom_pixels_with_setting2 = [
+
+
+
+    g, g, b, b, b, b, b, b,
+
+
+
+    g, g, b, b, b, br, b, b,
+
+
+
+    b, b, b, b, b, br, br, b,
+
+
+
+    b, b, br, br, br, br, b, b,
+
+
+
+    b, br, br, br, br, br, b, b,
+
+
+
+    b, b, br, b, b, br, b, b,
+
+
+
+    b, b, br, b, b, br, b, b,
+
+
+
+    g, g, g, g, g, g, g, g,
+
+    ]
+
+sense.set_pixels2(tom_pixels_with_setting)

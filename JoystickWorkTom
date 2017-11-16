@@ -3,7 +3,7 @@ from sense_hat import SenseHat
 from time import sleep
 
 sense = SenseHat()
-event = sense.stick.pressed()
+event = sense.stick.wait_for_event()
 
 # Variables ---------------------------
 
@@ -27,9 +27,12 @@ tom_pixels_with_setting = [
     ]
 sense.set_pixels(tom_pixels_with_setting)
 
-if event == sense.stick.pressed:  # change number and colors to what we want
+event == sense.stick.wait_for_event()
+#("{}".format(event.action))
 
-    tom_pixels_with_setting2 = [
+if ("{}".format(event.action)) == "pressed":  # change number and colors to what we want
+
+  tom_pixels_with_setting2 = [
     g, g, b, b, b, b, b, b,
     g, g, b, b, b, br, b, b,
     b, b, b, b, b, br, br, b,
@@ -38,7 +41,6 @@ if event == sense.stick.pressed:  # change number and colors to what we want
     b, b, br, b, b, br, b, b,
     b, b, br, b, b, br, b, b,
     g, g, g, g, g, g, g, g,
-
     ]
-
-sense.set_pixels2(tom_pixels_with_setting)
+    
+sense.set_pixels(tom_pixels_with_setting2)

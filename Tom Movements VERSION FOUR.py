@@ -17,6 +17,7 @@ gr = (192,192,192) #Color: Gray
 o  = (255,20,60)   #Color: Red
 l  = (0,0,0)       #Color: Blank
 game_over = False  #Game Status: Running (default)
+tamagatchi = True
 
 tom_pixels_logo = [
     l, l, l, l, l, l, l, l,
@@ -554,28 +555,46 @@ def set_scene():
           time.sleep(0.2)
           sense.set_pixels(tom_pixels_left_8)          
           time.sleep(0.2)
-def check_game():        
-  for event in sense.stick.get_events():
-      if event.action == 'pressed' and event.direction == 'up':
-          game_over = True
-      if event.action == 'pressed' and event.direction == 'down':
-          game_over = True
-      if event.action == 'pressed' and event.direction == 'right':
-          game_over = True
-      if event.action == 'pressed' and event.direction == 'left':
-          game_over = True
-      if event.action == 'pressed' and event.direction == 'middle':
-          game_over = True
+
+def end_game():
+  #game_over = True
+  sense.show_message("Game Over")
 
 ## Main ----------------------------------------------------------
+while tamagatchi:
+  while game_over == False:
+    event = sense.stick
   
-while game_over == False:
-  check_game()
-  print(temp)
-  temp = sense.get_temperature()
-  pitch = sense.get_orientation()['pitch'] ##Obtains the gyroscope readings
-  set_scene()
-  time.sleep(0.1)
-while game_over == True:
-  sense.show_message("Game Over")
-  sense.set_pixels(tom_pixels_logo)
+    for event in sense.stick.get_events():
+        if event.action == 'pressed' and event.direction == 'up':
+            game_over = True
+            end_game()
+        if event.action == 'pressed' and event.direction == 'down':
+            game_over = True
+            end_game()
+        if event.action == 'pressed' and event.direction == 'right':
+            game_over = True
+            end_game()
+        if event.action == 'pressed' and event.direction == 'left':
+            game_over = True
+            end_game()
+    print(temp)
+    temp = sense.get_temperature()
+    pitch = sense.get_orientation()['pitch'] ##Obtains the gyroscope readings
+    set_scene()
+    time.sleep(0.1)
+  while game_over == True:
+      event = sense.stick
+
+      sense.set_pixels(tom_pixels_logo)
+      for event in sense.stick.get_events():
+        if event.action == 'pressed' and event.direction == 'middle':
+          game_over = False
+        if event.action == 'pressed' and event.direction == 'up':
+          game_over = False
+        if event.action == 'pressed' and event.direction == 'down':
+          game_over = False
+        if event.action == 'pressed' and event.direction == 'right':
+          game_over = False
+        if event.action == 'pressed' and event.direction == 'left':
+          game_over = False

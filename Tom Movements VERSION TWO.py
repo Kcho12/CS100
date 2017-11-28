@@ -13,7 +13,7 @@ g  = (0,104,10)    #Color: Green
 y  = (253,184,19)  #Color: Yellow
 b  = (0,191,255)   #Color: Blue
 gr = (192,192,192) #Color: Gray
-o  = (255,140,0)   #Color: Orange
+o  = (255,20,60)   #Color: Red
 l  = (0,0,0)       #Color: Blank
 
 tom_pixels = [
@@ -38,7 +38,7 @@ tom_pixels_with_setting = [
     g, g, g, g, g, g, g, g,
     ]
 
-if temp > 29.7:  # Sun changes b/c of temp to be: ORANGE
+if temp > 30.4:  # Sun changes b/c of temp to be: ORANGE
   tom_pixels_right_1 = [
     o, o, l, l, l, l, l, l,
     o, o, l, l, l, br, l, l,
@@ -199,7 +199,7 @@ if temp > 29.7:  # Sun changes b/c of temp to be: ORANGE
     l, l, l, br, l, l, br, l,
     g, g, g, g, g, g, g, g,
     ]
-elif temp >= 29.0 and temp <= 29.7: # Sun is set at default: YELLOW
+elif temp >= 29.5 and temp <= 30.4: # Sun is set at default: YELLOW
   tom_pixels_right_1 = [
     y, y, l, l, l, l, l, l,
     y, y, l, l, l, br, l, l,
@@ -361,7 +361,7 @@ elif temp >= 29.0 and temp <= 29.7: # Sun is set at default: YELLOW
     g, g, g, g, g, g, g, g,
     ]
   
-elif temp < 29.0: # Sun changes b/c of temp to be: GRAY
+elif temp < 29.5: # Sun changes b/c of temp to be: GRAY
   tom_pixels_right_1 = [
     gr, gr, l, l, l, l, l, l,
     gr, gr, l, l, l, br, l, l,
@@ -568,7 +568,7 @@ def move_place():
           time.sleep(0.2)
           
 ## Main ----------------------------------------------------------
-
+print(temp)
 
 while game_over == False:
   pitch = sense.get_orientation()['pitch'] ##Obtains the gyroscope readings
